@@ -2,11 +2,11 @@
 from random import randint 
 
 #Rival's pokemon Health Points
-rival_maxhp = 80
+RIVAL_MAXHP = 80
 rival_hp =  80
 
 #My pokemon's Health Points
-my_maxhp = 90
+MY_MAXHP = 90
 my_hp = 90
 
 
@@ -32,9 +32,9 @@ def draw_hp(max_hp: float, hp: float):
 while rival_hp > 0 and my_hp > 0:
     #Pokemons life
     print("\n\nRival's pikachu life is: {}".format(rival_hp))
-    draw_hp(rival_maxhp, rival_hp)
+    draw_hp(RIVAL_MAXHP, rival_hp)
     print("your squirtle's life is {}".format(my_hp))
-    draw_hp(my_maxhp, my_hp)
+    draw_hp(MY_MAXHP, my_hp)
     #Rival's turn
     print("\nYour rival's turn")
     input("Press enter to continue...")
@@ -80,9 +80,9 @@ while rival_hp > 0 and my_hp > 0:
 
 #End of the combat
 print("\n\nRival's pikachu life is: {}".format(rival_hp))
-draw_hp(rival_maxhp, rival_hp)
+draw_hp(RIVAL_MAXHP, rival_hp)
 print("your squirtle's life is {}".format(my_hp))
-draw_hp(my_maxhp, my_hp)
+draw_hp(MY_MAXHP, my_hp)
 if rival_hp <= 0:
     print("Rival's pikachu has fainted, you win !")
 else:
