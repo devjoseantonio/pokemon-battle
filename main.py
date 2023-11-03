@@ -20,31 +20,32 @@ def calc_percentage(y: float, z: float):
 def draw_hp(max_hp: float, hp: float):
     hp_percent = calc_percentage(hp, max_hp)
     hp_graph = "[" + "#"*(int(hp_percent/10)) +  " "*(int(10-(hp_percent/10))) +"]"
-    """
-    for x in range (0, 100, 10):
-        if x < hp_percent:
-            hp_graph += "#"
-        else:
-            hp_graph += " "
-    """
     print(hp_graph)    
 
 
+def draw_pokemons_hp (rival_hp, my_hp):
+    print("\n")
+    if rival_hp < 0:
+        rival_hp = 0
+    if my_hp < 0:
+        my_hp = 0
+    print("Rival's pikachu life is: {}".format(rival_hp))
+    draw_hp(RIVAL_MAXHP, rival_hp)
+    print("your squirtle's life is {}".format(my_hp))
+    draw_hp(MY_MAXHP, my_hp)
+    print("\n")
+    
+#Battle cycle
 def battle_cycle():
     
     #Actual hp from the pokemons
     rival_hp =  RIVAL_MAXHP
-    my_hp = MY_MAXHP
-
-    #Battle cycle
+    my_hp = MY_MAXHP   
     while rival_hp > 0 and my_hp > 0:
         #Clear screen
         sprun("clear", shell=True)
         #Pokemons life
-        print("Rival's pikachu life is: {}".format(rival_hp))
-        draw_hp(RIVAL_MAXHP, rival_hp)
-        print("your squirtle's life is {}".format(my_hp))
-        draw_hp(MY_MAXHP, my_hp)
+        draw_pokemons_hp(rival_hp, my_hp)
         input("Press enter to continue...")
         sprun("clear", shell=True)
         #Rival's turn
@@ -59,8 +60,12 @@ def battle_cycle():
         else:
             print("Pikachu uses Thunder Wave -10")
             my_hp -= 10
+        draw_pokemons_hp(rival_hp, my_hp)
         input("Press enter to continue...")
+        if my_hp <= 0:
+            break
         sprun("clear", shell=True)
+        draw_pokemons_hp(rival_hp, my_hp)
         #Your turn
         print("It's your turn wich attack do you want to use?:")
         print("0. Tackle -- atk 10")
@@ -94,14 +99,7 @@ def battle_cycle():
         sprun("clear", shell=True)
 
     #End of the combat
-    if rival_hp < 0:
-        rival_hp = 0
-    if my_hp < 0:
-        my_hp = 0
-    print("\n\nRival's pikachu life is: {}".format(rival_hp))
-    draw_hp(RIVAL_MAXHP, rival_hp)
-    print("your squirtle's life is {}".format(my_hp))
-    draw_hp(MY_MAXHP, my_hp)
+    draw_pokemons_hp(rival_hp, my_hp)
     if rival_hp <= 0:
         print("Rival's pikachu has fainted, you win !")
     else:
