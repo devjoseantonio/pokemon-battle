@@ -78,7 +78,7 @@ def battle_cycle():
             my_atk = input("Select an option: ")
             #Check if the attack selected is not a number
             if not my_atk.isnumeric():
-                print("Error: Select a numeric option")
+                print("Error: No text or symbols allowed insert a number between 0-3")
                 my_atk = -1
             else:
                 my_atk = int(my_atk)
@@ -97,7 +97,7 @@ def battle_cycle():
                         print("Squirtle uses Splash -0")
                     #Check if the attack selected is a valid option
                     case _:
-                        print("Error: select a number between 0-2")
+                        print("Error: Insert a number between 0-3")
         input("Press enter to continue...")
         sprun("clear", shell=True)
 
